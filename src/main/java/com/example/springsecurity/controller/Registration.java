@@ -86,11 +86,11 @@ public class Registration {
     @PostMapping("/changepwd")
     public String changePwd(@RequestBody PasswordModel pm){
         User user=userService.findUserbyEmail(pm.getEmail());
-        if(userService.checkOldPwd(user,pm.getOldpwd())){
+        if(!userService.checkOldPwd(user,pm.getOldpwd())){      //check for old pwd and email should be same in the db
             return "invalid";
         }
         //save new password
-        userService.changePassword(user,pm.getNewpwd());
+        userService.changePassword(user,pm.getNewpwd());  //chnage their pwd
         return "password changed successfully";
 
     }

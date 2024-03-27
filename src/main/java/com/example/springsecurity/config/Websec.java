@@ -19,7 +19,8 @@ public class Websec {
             "/verifyRegistration*",
             "/resendVerificationToken*",
             "/resetpwd*",
-            "/savepwd*"
+            "/savepwd*",
+            "/changepwd*"
     };
     @Bean
     public PasswordEncoder passwordEncoder(){
