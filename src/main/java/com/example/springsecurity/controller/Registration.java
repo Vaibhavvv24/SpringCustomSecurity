@@ -83,6 +83,17 @@ public class Registration {
 
 
     }
+    @PostMapping("/changepwd")
+    public String changePwd(@RequestBody PasswordModel pm){
+        User user=userService.findUserbyEmail(pm.getEmail());
+        if(userService.checkOldPwd(user,pm.getOldpwd())){
+            return "invalid";
+        }
+        //save new password
+        userService.changePassword(user,pm.getNewpwd());
+        return "password changed successfully";
+
+    }
 
     private String passwordverificationTokenEmail(User user, String s, String pwdresettoken) {
         String url= s+"/savepwd?token="+ pwdresettoken;

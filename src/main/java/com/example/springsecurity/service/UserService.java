@@ -24,4 +24,6 @@ public interface UserService {
     Optional<User> getUserBypwdToken(String pwdtoken);
 
     void changePassword(User user, String newpwd);
+
+    boolean checkOldPwd(User user, String oldpwd);
 }

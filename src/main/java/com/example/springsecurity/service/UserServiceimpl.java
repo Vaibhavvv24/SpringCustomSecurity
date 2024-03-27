@@ -110,4 +110,9 @@ public class UserServiceimpl implements UserService {
         user.setPwd(passwordEncoder.encode(newpwd));
         userRepo.save(user);
     }
+
+    @Override
+    public boolean checkOldPwd(User user, String oldpwd) {
+        return passwordEncoder.matches(oldpwd,user.getPwd());
+    }
 }
